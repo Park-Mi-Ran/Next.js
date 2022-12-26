@@ -1,0 +1,28 @@
+{
+    "parserOptions" : {
+        "ecmaVersopm" : 2020,
+        "sourceType" : "module",
+        "ecmaFeatures":{
+            "jsx":true
+        }
+    },
+    "env":{
+        "browser" : true,
+        "node" : true,
+        "es6" : true
+    },
+    "extends" : [
+        "eslint: recommended",
+        "plugin:react/recommended"
+    ],
+    "plugins":[
+        "import",
+        "react-hooks"
+    ],
+    "rules":{
+
+    }
+
+    //vscode에 따로 설정하여 적용 : 확장프로그램 ESlint 설치 후 vscode setting에 들어가 
+    //javascripts format:Enable부분을 체크해제하기
+}
