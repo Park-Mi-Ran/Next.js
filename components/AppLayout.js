@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types'; //typescript사용시 필요 x
 import Link from 'next/link'; 
-import { Menu } from 'antd';
-
+import { Input, Menu, Row, Col } from 'antd';
+import UserProfile from '../components/UserProfile';
+import LoginForm from '../components/LoginForm';
+import styled from 'styled-components';
 //react hot loader next.js 지원
 
+const SearchInput = styled(Input.Search)`
+    vertical-align: middle;
+`;
 const AppLayout = ({children}) => {
+    const [isLoggedIn,setIsLoggedIn] = useState(false);
     return(
         <div>
             <Menu mode="horizontal">
@@ -16,10 +22,23 @@ const AppLayout = ({children}) => {
             <Link href="/profile"><a>프로필</a></Link>
             </Menu.Item>
             <Menu.Item>
+                <SearchInput/>
+            </Menu.Item>
+            <Menu.Item>
             <Link href="/signup"><a>회원가입</a></Link>
             </Menu.Item>
             </Menu>
-            {children}
+            <Row gutter={8}>
+                <Col xs={24} md={6}>
+                    {isLoggedIn ? <UserProfile/> : <LoginForm/>}
+                </Col>
+                <Col xs={24} md={12}>
+                {children}
+                </Col>
+                <Col xs={24} md={6}>
+                <a href='#' target="_blank" rel="noreferrer noopener">Made by parkmiran</a>
+                </Col>
+            </Row>
         </div>
     )
 };
